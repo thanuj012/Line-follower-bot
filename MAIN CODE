@@ -1,0 +1,76 @@
+// Line Follower Robot with 2 IR sensors + L298N
+// Author: Your Name
+
+#define IR_LEFT  2
+#define IR_RIGHT 3
+#define ENA 9   // Enable A (PWM)
+#define ENB 10  // Enable B (PWM)
+#define IN1 4
+#define IN2 5
+#define IN3 6
+#define IN4 7
+
+void setup() {
+  pinMode(IR_LEFT, INPUT);
+  pinMode(IR_RIGHT, INPUT);
+
+  pinMode(ENA, OUTPUT);
+  pinMode(ENB, OUTPUT);
+  pinMode(IN1, OUTPUT);
+  pinMode(IN2, OUTPUT);
+  pinMode(IN3, OUTPUT);
+  pinMode(IN4, OUTPUT);
+
+  analogWrite(ENA, 150); // motor speed
+  analogWrite(ENB, 150);
+}
+
+void loop() {
+  int left = digitalRead(IR_LEFT);
+  int right = digitalRead(IR_RIGHT);
+
+  if (left == 0 && right == 0) {
+    // Move forward
+    forward();
+  } 
+  else if (left == 1 && right == 0) {
+    // Turn right
+    rightTurn();
+  } 
+  else if (left == 0 && right == 1) {
+    // Turn left
+    leftTurn();
+  } 
+  else {
+    // Stop if no line detected
+    stopMotors();
+  }
+}
+
+void forward() {
+  digitalWrite(IN1, HIGH);
+  digitalWrite(IN2, LOW);
+  digitalWrite(IN3, HIGH);
+  digitalWrite(IN4, LOW);
+}
+
+void leftTurn() {
+  digitalWrite(IN1, LOW);
+  digitalWrite(IN2, HIGH);
+  digitalWrite(IN3, HIGH);
+  digitalWrite(IN4, LOW);
+}
+
+void rightTurn() {
+  digitalWrite(IN1, HIGH);
+  digitalWrite(IN2, LOW);
+  digitalWrite(IN3, LOW);
+  digitalWrite(IN4, HIGH);
+}
+
+void stopMotors() {
+  digitalWrite(IN1, LOW);
+  digitalWrite(IN2, LOW);
+  digitalWrite(IN3, LOW);
+  digitalWrite(IN4, LOW);
+}
