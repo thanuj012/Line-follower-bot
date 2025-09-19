@@ -1,0 +1,27 @@
+
+
+## 📌 Pinouts
+
+### 🔹 Ultrasonic Sensor (HC-SR04)
+| Component | Arduino Pin |
+|-----------|-------------|
+| Trigger   | D12         |
+| Echo      | D11         |
+
+### 🔹 IR Sensors
+| Sensor   | Arduino Pin |
+|----------|-------------|
+| Left IR  | A0          |
+| Right IR | A1          |
+
+### 🔹 L298N Motor Driver
+| Motor Driver Pin | Arduino Pin | Function |
+|------------------|-------------|----------|
+| ENA              | D5          | PWM – Speed control for Motor A |
+| IN1              | D2          | Motor A direction |
+| IN2              | D3          | Motor A direction |
+| ENB              | D6          | PWM – Speed control for Motor B |
+| IN3              | D4          | Motor B direction |
+| IN4              | D7          | Motor B direction |
+
+
